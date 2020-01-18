@@ -6,7 +6,7 @@ import 'package:flutter_app/HomeRouter.dart';
 import 'dart:convert';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
+import 'package:flutter_app/ClassCell.dart';
 class ClassController extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => ClassControllerState();
@@ -39,6 +39,7 @@ class ClassControllerState extends State<ClassController> {
   }
 
   Widget _buildList() {
+
     return SmartRefresher(
       enablePullDown: true,
       enablePullUp: true,
@@ -77,7 +78,7 @@ class ClassControllerState extends State<ClassController> {
               padding: const EdgeInsets.all(16.0),
               itemCount: _Datas.length,
               itemBuilder: (context, int index) {
-                return _buildRow(_Datas[index]);
+                return ClassCell(_Datas[index]);
               },
             ),
     );
@@ -98,121 +99,7 @@ class ClassControllerState extends State<ClassController> {
     return;
   }
 
-  Widget _buildRow(People user) {
-    ///任务标签
-    List<Container> tiles = [];
-    Widget _tagContent;
-    for (var item in user.tags) {
-      tiles.add(Container(
-          //左边添加8像素补白
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.only(left: 10.0, top: 3, bottom: 3),
-          child: Text(
-            item.name,
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 11,
-              backgroundColor: Color.fromARGB(255, 242, 242, 242),
-              color: Color.fromARGB(255, 140, 140, 140),
-            ),
-          )));
-    }
-    _tagContent = new Row(children: tiles);
 
-    ///话题
-    List<Row> topicTiles = [];
-    Widget _topicContent;
-    for (var item in user.topics) {
-      topicTiles.add(Row(
-        children: <Widget>[
-          Container(
-
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.only(left: 8.0, top: 3, bottom: 3),
-              child: Text(
-                "#",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    fontSize: 20, color: Color.fromARGB(255, 182, 182, 182)),
-              )),
-          Container(
-              //左边添加8像素补白
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.only(left: 7.0, top: 3, bottom: 3),
-              child: Text(
-                item.title,
-                textAlign: TextAlign.left,
-              )),
-        ],
-      ));
-    }
-    _topicContent = new Column(children: topicTiles);
-
-    return Card(
-      child: Column(
-        children: <Widget>[
-          Row(
-
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-
-              Container(
-                padding: const EdgeInsets.fromLTRB(8.0, 5.0, 8.0, 2.0),
-               child: ClipOval(
-
-                  child: Image.network(
-                    user.avatar,
-                    width: 50,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Column(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(left: 7, top: 5, bottom: 7 ,right: 7),
-                    child: Text(
-                      user.name,
-                      textAlign: TextAlign.left,
-                      softWrap: true,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18.0,
-                        fontFamily: "Courier",
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10.0, 2.0, 10.0, 2.0),
-                    child: Text(
-                      user.title,
-                      textAlign: TextAlign.left,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-
-          _topicContent, //话题
-          _tagContent, //标签
-
-          Container(
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(left: 7, top: 5, bottom: 7 ,right: 7),
-            child:Text(user.location,
-            textAlign: TextAlign.left,
-              style: TextStyle(
-              color: Colors.blueGrey,
-                fontSize: 16.0,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   void _pushSaved() {
     Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
