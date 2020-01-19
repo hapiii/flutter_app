@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Controllers/TeacherDetailController.dart';
 import 'package:flutter_app/DioTestpage.dart';
 import 'package:flutter_app/Models/People.dart';
-import 'package:flutter_app/HomeRouter.dart';
 import 'dart:convert';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -78,7 +78,8 @@ class ClassControllerState extends State<ClassController> {
               padding: const EdgeInsets.all(16.0),
               itemCount: _Datas.length,
               itemBuilder: (context, int index) {
-                return ClassCell(_Datas[index]);
+                People user = _Datas[index];
+                return ClassCell(user,pushSaved);
               },
             ),
     );
@@ -99,11 +100,11 @@ class ClassControllerState extends State<ClassController> {
     return;
   }
 
-
-
-  void _pushSaved() {
+  void pushSaved(String uid) {
+    print("跳转啦");
     Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return HomeRouter();
+
+      return TeacherDetailController(uid);
     }));
   }
 
