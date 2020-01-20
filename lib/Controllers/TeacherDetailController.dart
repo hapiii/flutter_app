@@ -42,7 +42,7 @@ class TeacherDetailControllerState extends State<TeacherDetailController>{
 
         Map<String,dynamic> data= jsonDecode(response.data.toString());
         TeacherDetail teacher = TeacherDetail.fromJson(data);
-        print(teacher.title);
+        print(teacher.uid);
       });
       setState(() {
 

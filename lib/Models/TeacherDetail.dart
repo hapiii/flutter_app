@@ -4,9 +4,10 @@ class TeacherDetail {
   String avatar;
   String cardImage;
   String city;
+
   List<String> images;
   String introduction;
-  List<String> introductionImages;
+
   bool isEnableMeet;
   bool isRecToCurrentUser;
   bool isStared;
@@ -19,6 +20,7 @@ class TeacherDetail {
   String occupation;
   List<PrestigeTags> prestigeTags;
   PriceSettings priceSettings;
+
   int rankScore;
   String reviewRemark;
   String reviewStatus;
@@ -43,10 +45,11 @@ class TeacherDetail {
 
         this.images,
         this.introduction,
-        this.introductionImages,
+
         this.isEnableMeet,
         this.isRecToCurrentUser,
         this.isStared,
+
         this.location,
         this.meetsCount,
         this.mentorEx,
@@ -56,6 +59,7 @@ class TeacherDetail {
         this.occupation,
         this.prestigeTags,
         this.priceSettings,
+
         this.rankScore,
         this.reviewRemark,
         this.reviewStatus,
@@ -80,7 +84,7 @@ class TeacherDetail {
 
     images = json['images'].cast<String>();
     introduction = json['introduction'];
-    introductionImages = json['introduction_images'].cast<String>();
+
     isEnableMeet = json['is_enable_meet'];
     isRecToCurrentUser = json['is_rec_to_current_user'];
     isStared = json['is_stared'];
@@ -142,7 +146,7 @@ class TeacherDetail {
 
     data['images'] = this.images;
     data['introduction'] = this.introduction;
-    data['introduction_images'] = this.introductionImages;
+
     data['is_enable_meet'] = this.isEnableMeet;
     data['is_rec_to_current_user'] = this.isRecToCurrentUser;
     data['is_stared'] = this.isStared;
@@ -189,14 +193,21 @@ class TeacherDetail {
 
 class MentorEx {
   String achievement;
+  List<Null> achievementImages;
   String industry;
   String industryTime;
   String links;
 
-  MentorEx({this.achievement, this.industry, this.industryTime, this.links});
+  MentorEx(
+      {this.achievement,
+        this.achievementImages,
+        this.industry,
+        this.industryTime,
+        this.links});
 
   MentorEx.fromJson(Map<String, dynamic> json) {
     achievement = json['achievement'];
+
     industry = json['industry'];
     industryTime = json['industry_time'];
     links = json['links'];
@@ -205,6 +216,7 @@ class MentorEx {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['achievement'] = this.achievement;
+
     data['industry'] = this.industry;
     data['industry_time'] = this.industryTime;
     data['links'] = this.links;
@@ -230,63 +242,6 @@ class PrestigeTags {
     data['id'] = this.id;
     data['name'] = this.name;
     data['prestige'] = this.prestige;
-    return data;
-  }
-}
-
-class PriceSettings {
-  bool isOpenQuestionDiscount;
-  bool isShowAchievement;
-  bool isShowEducations;
-  bool isShowJobs;
-  bool isShowProjectExperiences;
-  bool isSupportQuestion;
-  int leftQuestionDiscountCount;
-  int questionDiscountCount;
-  int questionOriginalPrice;
-  String questionPayType;
-  int questionPrice;
-
-  PriceSettings(
-      {this.isOpenQuestionDiscount,
-        this.isShowAchievement,
-        this.isShowEducations,
-        this.isShowJobs,
-        this.isShowProjectExperiences,
-        this.isSupportQuestion,
-        this.leftQuestionDiscountCount,
-        this.questionDiscountCount,
-        this.questionOriginalPrice,
-        this.questionPayType,
-        this.questionPrice});
-
-  PriceSettings.fromJson(Map<String, dynamic> json) {
-    isOpenQuestionDiscount = json['is_open_question_discount'];
-    isShowAchievement = json['is_show_achievement'];
-    isShowEducations = json['is_show_educations'];
-    isShowJobs = json['is_show_jobs'];
-    isShowProjectExperiences = json['is_show_project_experiences'];
-    isSupportQuestion = json['is_support_question'];
-    leftQuestionDiscountCount = json['left_question_discount_count'];
-    questionDiscountCount = json['question_discount_count'];
-    questionOriginalPrice = json['question_original_price'];
-    questionPayType = json['question_pay_type'];
-    questionPrice = json['question_price'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['is_open_question_discount'] = this.isOpenQuestionDiscount;
-    data['is_show_achievement'] = this.isShowAchievement;
-    data['is_show_educations'] = this.isShowEducations;
-    data['is_show_jobs'] = this.isShowJobs;
-    data['is_show_project_experiences'] = this.isShowProjectExperiences;
-    data['is_support_question'] = this.isSupportQuestion;
-    data['left_question_discount_count'] = this.leftQuestionDiscountCount;
-    data['question_discount_count'] = this.questionDiscountCount;
-    data['question_original_price'] = this.questionOriginalPrice;
-    data['question_pay_type'] = this.questionPayType;
-    data['question_price'] = this.questionPrice;
     return data;
   }
 }
@@ -386,4 +341,83 @@ class MeetPrice {
   }
 }
 
+class PriceSettings {
+  int companyPrice;
+  bool isOpenOfflineDiscount;
+  bool isOpenVoiceDiscount;
+  bool isSupportOffline;
+  bool isSupportVoice;
+  int leftOfflineDiscountCount;
+  int leftVoiceDiscountCount;
+  int offlineDiscountCount;
+  String offlineDurationChoice;
+  int offlineOriginalPrice;
+  String offlinePayType;
+  int offlinePrice;
+  int voiceDiscountCount;
+  String voiceDurationChoice;
+  int voiceOriginalPrice;
+  String voicePayType;
+  int voicePrice;
 
+  PriceSettings(
+      {this.companyPrice,
+        this.isOpenOfflineDiscount,
+        this.isOpenVoiceDiscount,
+        this.isSupportOffline,
+        this.isSupportVoice,
+        this.leftOfflineDiscountCount,
+        this.leftVoiceDiscountCount,
+        this.offlineDiscountCount,
+        this.offlineDurationChoice,
+        this.offlineOriginalPrice,
+        this.offlinePayType,
+        this.offlinePrice,
+        this.voiceDiscountCount,
+        this.voiceDurationChoice,
+        this.voiceOriginalPrice,
+        this.voicePayType,
+        this.voicePrice});
+
+  PriceSettings.fromJson(Map<String, dynamic> json) {
+    companyPrice = json['company_price'];
+    isOpenOfflineDiscount = json['is_open_offline_discount'];
+    isOpenVoiceDiscount = json['is_open_voice_discount'];
+    isSupportOffline = json['is_support_offline'];
+    isSupportVoice = json['is_support_voice'];
+    leftOfflineDiscountCount = json['left_offline_discount_count'];
+    leftVoiceDiscountCount = json['left_voice_discount_count'];
+    offlineDiscountCount = json['offline_discount_count'];
+    offlineDurationChoice = json['offline_duration_choice'];
+    offlineOriginalPrice = json['offline_original_price'];
+    offlinePayType = json['offline_pay_type'];
+    offlinePrice = json['offline_price'];
+    voiceDiscountCount = json['voice_discount_count'];
+    voiceDurationChoice = json['voice_duration_choice'];
+    voiceOriginalPrice = json['voice_original_price'];
+    voicePayType = json['voice_pay_type'];
+    voicePrice = json['voice_price'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['company_price'] = this.companyPrice;
+    data['is_open_offline_discount'] = this.isOpenOfflineDiscount;
+    data['is_open_voice_discount'] = this.isOpenVoiceDiscount;
+    data['is_support_offline'] = this.isSupportOffline;
+    data['is_support_voice'] = this.isSupportVoice;
+    data['left_offline_discount_count'] = this.leftOfflineDiscountCount;
+    data['left_voice_discount_count'] = this.leftVoiceDiscountCount;
+    data['offline_discount_count'] = this.offlineDiscountCount;
+    data['offline_duration_choice'] = this.offlineDurationChoice;
+    data['offline_original_price'] = this.offlineOriginalPrice;
+    data['offline_pay_type'] = this.offlinePayType;
+    data['offline_price'] = this.offlinePrice;
+    data['voice_discount_count'] = this.voiceDiscountCount;
+    data['voice_duration_choice'] = this.voiceDurationChoice;
+    data['voice_original_price'] = this.voiceOriginalPrice;
+    data['voice_pay_type'] = this.voicePayType;
+    data['voice_price'] = this.voicePrice;
+    return data;
+  }
+}

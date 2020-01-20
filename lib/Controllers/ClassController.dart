@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_app/ClassCell.dart';
+import 'package:flutter_app/Controllers/PaperController.dart';
 class ClassController extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => ClassControllerState();
@@ -104,7 +105,8 @@ class ClassControllerState extends State<ClassController> {
     print("跳转啦");
     Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
 
-      return TeacherDetailController(uid);
+      return PaperController();
+      //return TeacherDetailController(uid);
     }));
   }
 
