@@ -33,3 +33,9 @@ createState->initState->didChangeDependencies->build->addPostFrameCallback->didU
 ```
 
 一周主要是实现flutter的语法和生命周期,UI布局,剩下的就是了解一下常用的三方框架
+
+>4月30更新
+
+打了一个web包，在build/web下。效果可以点[flutter_web](http://wangqiang.online/flutter/index.html)观看,
+
+只有中间的url可以请求到,错误原因是浏览器的跨域问题,正式使用的时候自己的后台不会出现这个问题,三端通用是可行的方案!

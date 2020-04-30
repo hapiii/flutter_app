@@ -15,8 +15,8 @@ class TabbarState extends State<Tabbar> {//<>是谁的state
 
   void initState(){
     super.initState();
-    _pages.add(HomeController());
     _pages.add(ClassController());
+    _pages.add(HomeController());
     _pages.add(MyController());
   }
 

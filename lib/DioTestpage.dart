@@ -49,7 +49,7 @@ class NetUtil2 {
 
       Dio dio = new Dio();
       //json
-      dio.options.responseType = ResponseType.PLAIN;
+      dio.options.responseType = ResponseType.plain;
       if (method == GET) {
         response = await dio.get(url);
       } else {
